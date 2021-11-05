@@ -1,24 +1,10 @@
-// mapbox default styles: mapbox://styles/mapbox/streets-v11
-
 import Head from 'next/head'
-import mapboxgl from 'mapbox-gl'
-import { useEffect } from 'react'
-
-mapboxgl.accessToken =
-    'pk.eyJ1IjoiZ2F1dGFtcGIiLCJhIjoiY2tzNGVzOHcxMWI2YjJ1cW12bjhmd3J6NiJ9._r1cFrkSyBDABOpDBwfIlg'
+import Map from './components/Map'
+import Image from 'next/image'
 
 export default function Home() {
-    useEffect(() => {
-        const map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/gautampb/ckvmvkd9w287u14mwslt61b3e',
-            center: [-99.29011, 39.39172],
-            zoom: 3,
-        })
-    }, [])
-
     return (
-        <div className="h-screen bg-blue-500 flex flex-col">
+        <div className="h-screen flex flex-col">
             <Head>
                 <title>Uber Clone</title>
                 <meta
@@ -28,11 +14,31 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="bg-red-500 flex-1" id="map">
-                Map
-            </div>
+            <Map />
 
-            <div className="bg-green-500 flex-1">Start</div>
+            <div className="flex-1 p-5">
+                {/* HEADER */}
+                <div className="flex items-center justify-between">
+                    <h1 className="font-semibold text-5xl">UBER</h1>
+
+                    <div className="flex items-center space-x-4">
+                        <h1 className="text-sm">Elon Musk</h1>
+                        <div>
+                            <Image
+                                src="https://media.gq.com/photos/566ac3fec0f741b430e641e7/4:3/w_1480,h_1110,c_limit/elon-musk-gq-1215-01-sq.jpg"
+                                alt=""
+                                width={50}
+                                height={50}
+                                className="rounded-full"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* ACTION BUTTONS */}
+
+                {/* INPUT BUTTONS */}
+            </div>
         </div>
     )
 }
