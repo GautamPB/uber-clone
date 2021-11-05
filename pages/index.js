@@ -1,9 +1,24 @@
+// mapbox default styles: mapbox://styles/mapbox/streets-v11
+
 import Head from 'next/head'
-import Header from '../components/Header'
+import mapboxgl from 'mapbox-gl'
+import { useEffect } from 'react'
+
+mapboxgl.accessToken =
+    'pk.eyJ1IjoiZ2F1dGFtcGIiLCJhIjoiY2tzNGVzOHcxMWI2YjJ1cW12bjhmd3J6NiJ9._r1cFrkSyBDABOpDBwfIlg'
 
 export default function Home() {
+    useEffect(() => {
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/gautampb/ckvmvkd9w287u14mwslt61b3e',
+            center: [-99.29011, 39.39172],
+            zoom: 3,
+        })
+    }, [])
+
     return (
-        <div>
+        <div className="h-screen bg-blue-500 flex flex-col">
             <Head>
                 <title>Uber Clone</title>
                 <meta
@@ -13,9 +28,11 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div>
-                <Header />
+            <div className="bg-red-500 flex-1" id="map">
+                Map
             </div>
+
+            <div className="bg-green-500 flex-1">Start</div>
         </div>
     )
 }
