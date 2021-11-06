@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Map from './components/Map'
 import Image from 'next/image'
+import ActionButton from './components/ActionButton'
 
 export default function Home() {
     return (
@@ -16,7 +17,7 @@ export default function Home() {
 
             <Map />
 
-            <div className="flex-1 p-5">
+            <div className="flex-1 p-5 space-y-5">
                 {/* HEADER */}
                 <div className="flex items-center justify-between">
                     <h1 className="font-semibold text-5xl">UBER</h1>
@@ -36,8 +37,30 @@ export default function Home() {
                 </div>
 
                 {/* ACTION BUTTONS */}
+                <div className="flex space-x-4">
+                    <ActionButton
+                        imageSrc="https://i.ibb.co/cyvcpfF/uberx.png"
+                        title="Ride"
+                        link="/search"
+                    />
+
+                    <ActionButton
+                        imageSrc="https://i.ibb.co/n776JLm/bike.png"
+                        title="2 Wheels"
+                        link="/"
+                    />
+
+                    <ActionButton
+                        imageSrc="https://i.ibb.co/5RjchBg/uberschedule.png"
+                        title="Reserver"
+                        link="/"
+                    />
+                </div>
 
                 {/* INPUT BUTTONS */}
+                <div className="h-20 bg-gray-200 text-2xl p-4 flex items-center mt-8">
+                    <h1>Where to?</h1>
+                </div>
             </div>
         </div>
     )
