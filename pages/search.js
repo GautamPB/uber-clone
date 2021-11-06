@@ -84,7 +84,16 @@ const Search = () => {
                 <h1>Saved places</h1>
             </div>
 
-            <Link href="/confirm" passHref>
+            <Link
+                href={{
+                    pathname: '/confirm',
+                    query: {
+                        pickup: pickup,
+                        destination: destination,
+                    },
+                }}
+                passHref
+            >
                 <div className="px-4 py-2">
                     <button className="bg-black text-white font-semibold text-lg w-full py-2 active:scale-90 transition">
                         Confirm Locations

@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
 import Map from './components/Map'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const Confirm = () => {
     const [pickupCoordinates, setPickupCoordinates] = useState()
     const [destinationCoordinates, setDestinationCoordinates] = useState()
 
+    const router = useRouter()
+    const { pickup, destination } = router.query
+
     const getPickupCoordinates = () => {
-        const pickup = 'Santa Monica'
+        // const pickup = 'Santa Monica'
         fetch(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
                 new URLSearchParams({
@@ -23,7 +27,7 @@ const Confirm = () => {
     }
 
     const getDestinationCoordinates = () => {
-        const destination = 'Los Angeles'
+        // const destination = 'Los Angeles'
         fetch(
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${destination}.json?` +
                 new URLSearchParams({
