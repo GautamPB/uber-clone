@@ -2,6 +2,7 @@ import { ArrowLeftIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Search = () => {
     const [pickup, setPickup] = useState('')
@@ -9,6 +10,10 @@ const Search = () => {
 
     return (
         <div className="bg-gray-200 h-screen space-y-4">
+            <Head>
+                <title>Search</title>
+            </Head>
+
             <div className="bg-white p-5">
                 <div className="space-y-4">
                     <Link href="/" passHref>
@@ -79,11 +84,13 @@ const Search = () => {
                 <h1>Saved places</h1>
             </div>
 
-            <div className="px-4 py-2">
-                <button className="bg-black text-white font-semibold text-lg w-full py-2">
-                    Confirm Locations
-                </button>
-            </div>
+            <Link href="/confirm" passHref>
+                <div className="px-4 py-2">
+                    <button className="bg-black text-white font-semibold text-lg w-full py-2 active:scale-90 transition">
+                        Confirm Locations
+                    </button>
+                </div>
+            </Link>
         </div>
     )
 }
