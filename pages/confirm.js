@@ -4,6 +4,8 @@ import CarComponent from './components/CarComponent'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { carList } from '../utils/carList'
+import { ArrowLeftIcon } from '@heroicons/react/solid'
+import Link from 'next/link'
 
 const Confirm = () => {
     const [pickupCoordinates, setPickupCoordinates] = useState()
@@ -54,10 +56,18 @@ const Confirm = () => {
                 <title>Confirm</title>
             </Head>
 
-            <Map
-                pickup={pickupCoordinates}
-                destination={destinationCoordinates}
-            />
+            <div className="flex flex-1 h-1/2 relative">
+                <Map
+                    pickup={pickupCoordinates}
+                    destination={destinationCoordinates}
+                />
+
+                <Link href="/search" passHref>
+                    <div className="absolute flex mt-4 ml-4 bg-gray-200 rounded-full p-1 cursor-pointer">
+                        <ArrowLeftIcon className="h-8" />
+                    </div>
+                </Link>
+            </div>
 
             <div className="flex flex-1 flex-col items-center p-2 h-1/2 lg:h-full">
                 <h1 className="text-gray-400 text-sm border-b border-gray-200 w-full flex justify-center pb-1">
