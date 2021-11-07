@@ -5,7 +5,7 @@ import ActionButton from './components/ActionButton'
 
 export default function Home() {
     return (
-        <div className="h-screen flex flex-col">
+        <div className="h-screen flex flex-col lg:flex-row">
             <Head>
                 <title>Uber Clone</title>
                 <meta
