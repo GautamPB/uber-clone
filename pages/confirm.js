@@ -11,6 +11,7 @@ const Confirm = () => {
     const [pickupCoordinates, setPickupCoordinates] = useState()
     const [destinationCoordinates, setDestinationCoordinates] = useState()
     const [service, setService] = useState('UberX')
+    const [rideDuration, setRideDuration] = useState(0)
 
     const router = useRouter()
     const { pickup, destination } = router.query
@@ -50,6 +51,19 @@ const Confirm = () => {
         getDestinationCoordinates(destination)
     }, [pickup, destination])
 
+    useEffect(() => {
+        if (pickupCoordinates && destinationCoordinates) {
+            fetch(
+                `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${destinationCoordinates[0]},${destinationCoordinates[1]}?access_token=pk.eyJ1IjoiZ2F1dGFtcGIiLCJhIjoiY2tzNGVzOHcxMWI2YjJ1cW12bjhmd3J6NiJ9._r1cFrkSyBDABOpDBwfIlg`
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data)
+                    setRideDuration(data.routes[0].duration / 100)
+                })
+        }
+    }, [pickupCoordinates, destinationCoordinates])
+
     return (
         <div className="flex h-screen flex-col lg:flex-row">
             <Head>
@@ -84,7 +98,9 @@ const Confirm = () => {
                                 image={car.imgUrl}
                                 carType={car.service}
                                 duration="5 mins away"
-                                price={20.54}
+                                price={(rideDuration * car.multiplier).toFixed(
+                                    2
+                                )}
                             />
                         </div>
                     ))}
