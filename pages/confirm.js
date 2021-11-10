@@ -97,7 +97,7 @@ const Confirm = () => {
                             <CarComponent
                                 image={car.imgUrl}
                                 carType={car.service}
-                                duration="5 mins away"
+                                duration={car.duration}
                                 price={(rideDuration * car.multiplier).toFixed(
                                     2
                                 )}
