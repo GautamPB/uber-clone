@@ -70,7 +70,7 @@ const Confirm = () => {
                 <title>Confirm</title>
             </Head>
 
-            <div className="flex flex-1 h-1/2 relative">
+            <div className="flex flex-1 h-1/2 relative lg:h-full">
                 <Map
                     pickup={pickupCoordinates}
                     destination={destinationCoordinates}
@@ -106,7 +106,7 @@ const Confirm = () => {
                     ))}
                 </div>
 
-                <div className="bg-black text-white w-full flex items-center justify-center m-4 py-2 font-semibold text-lg rounded-lg cursor-pointer active:scale-90 transition">
+                <div className="bg-black text-white w-full flex items-center justify-center m-4 py-2 font-semibold text-lg rounded-lg cursor-pointer active:scale-90 transition lg:mt-auto">
                     <button>Confirm {service}</button>
                 </div>
             </div>

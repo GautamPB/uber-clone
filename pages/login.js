@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { auth, provider } from '../Firebase'
 import { signInWithPopup, onAuthStateChanged } from 'firebase/auth'
+import Head from 'next/head'
 
 const Login = () => {
     const router = useRouter()
@@ -21,6 +22,9 @@ const Login = () => {
 
     return (
         <div className="bg-gray-200 h-screen flex flex-col items-center">
+            <Head>
+                <title>Login</title>
+            </Head>
             <div className="h-[50%] relative">
                 <div className="absolute flex flex-col p-4">
                     <h1 className="font-semibold text-3xl">UBER</h1>
