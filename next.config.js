@@ -7,6 +7,7 @@ module.exports = {
             'i.ibb.co',
             'img.icons8.com',
             'www.google.com',
+            'lh3.googleusercontent.com',
         ],
     },
 }

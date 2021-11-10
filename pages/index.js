@@ -26,7 +26,7 @@ export default function Home() {
                 router.push('/login')
             }
         })
-    }, [])
+    }, [router, user])
 
     return (
         <div className="h-screen flex flex-col lg:flex-row">
@@ -53,14 +53,16 @@ export default function Home() {
                         >
                             <h1 className="text-sm">{user && user.name}</h1>
                             <div>
-                                <img
+                                <Image
                                     src={
                                         user
                                             ? user.photo
                                             : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chocolatebayou.org%2Fvolunteers%2Fdefault-profile-picture%2F&psig=AOvVaw1Rtv-HE5KfKpAUDq2Byjht&ust=1636612091245000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDx4KWVjfQCFQAAAAAdAAAAABAO'
                                     }
                                     alt=""
-                                    className="rounded-full w-[50px] h-[50px]"
+                                    width={50}
+                                    height={50}
+                                    className="rounded-full"
                                 />
                             </div>
                         </div>

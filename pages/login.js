@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { auth, provider } from '../Firebase'
 import { signInWithPopup, onAuthStateChanged } from 'firebase/auth'
 import Head from 'next/head'
+import Image from 'next/image'
 
 const Login = () => {
     const router = useRouter()
