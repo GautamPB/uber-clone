@@ -19,7 +19,7 @@ const Login = () => {
                 router.push('/')
             }
         })
-    }, [])
+    })
 
     return (
         <div className="bg-gray-200 h-screen flex flex-col items-center">
