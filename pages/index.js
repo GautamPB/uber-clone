@@ -1,9 +1,33 @@
+import { useState, useEffect } from 'react'
+import { auth } from '../Firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Map from './components/Map'
 import Image from 'next/image'
 import ActionButton from './components/ActionButton'
+import Link from 'next/link'
 
 export default function Home() {
+    const router = useRouter()
+
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        return onAuthStateChanged(auth, (user) => {
+            // listener to check if a user is logged in or not
+            if (user) {
+                setUser({
+                    name: user.displayName,
+                    photo: user.photoURL,
+                })
+            } else {
+                setUser(null)
+                router.push('/login')
+            }
+        })
+    }, [])
+
     return (
         <div className="h-screen flex flex-col lg:flex-row">
             <Head>
@@ -22,18 +46,25 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                     <h1 className="font-semibold text-5xl">UBER</h1>
 
-                    <div className="flex items-center space-x-4">
-                        <h1 className="text-sm">Elon Musk</h1>
-                        <div>
-                            <Image
-                                src="https://media.gq.com/photos/566ac3fec0f741b430e641e7/4:3/w_1480,h_1110,c_limit/elon-musk-gq-1215-01-sq.jpg"
-                                alt=""
-                                width={50}
-                                height={50}
-                                className="rounded-full"
-                            />
+                    <Link href="/login" passHref>
+                        <div
+                            className="flex items-center space-x-4 cursor-pointer"
+                            onClick={() => signOut(auth)}
+                        >
+                            <h1 className="text-sm">{user && user.name}</h1>
+                            <div>
+                                <img
+                                    src={
+                                        user
+                                            ? user.photo
+                                            : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chocolatebayou.org%2Fvolunteers%2Fdefault-profile-picture%2F&psig=AOvVaw1Rtv-HE5KfKpAUDq2Byjht&ust=1636612091245000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDx4KWVjfQCFQAAAAAdAAAAABAO'
+                                    }
+                                    alt=""
+                                    className="rounded-full w-[50px] h-[50px]"
+                                />
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
 
                 {/* ACTION BUTTONS */}
@@ -47,13 +78,13 @@ export default function Home() {
                     <ActionButton
                         imageSrc="https://i.ibb.co/n776JLm/bike.png"
                         title="2 Wheels"
-                        link="/"
+                        link="/search"
                     />
 
                     <ActionButton
                         imageSrc="https://i.ibb.co/5RjchBg/uberschedule.png"
                         title="Reserver"
-                        link="/"
+                        link="/search"
                     />
                 </div>
 
