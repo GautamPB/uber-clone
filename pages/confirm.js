@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Map from './components/Map'
-import CarComponent from './components/CarComponent'
+import Map from '../components/Map'
+import CarComponent from '../components/CarComponent'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { carList } from '../utils/carList'

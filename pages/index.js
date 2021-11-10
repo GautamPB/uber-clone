@@ -3,9 +3,9 @@ import { auth } from '../Firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Map from './components/Map'
+import Map from '../components/Map'
 import Image from 'next/image'
-import ActionButton from './components/ActionButton'
+import ActionButton from '../components/ActionButton'
 import Link from 'next/link'
 
 export default function Home() {
